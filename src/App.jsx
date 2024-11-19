@@ -65,7 +65,12 @@ function App() {
     setIsMetric((isMetric) => !isMetric);
   };
 
-  if (loading) return <div className="container">Loading...</div>;
+  if (loading)
+    return (
+      <div className=" loading">
+        <i className="fa-solid fa-spinner "></i>
+      </div>
+    );
 
   return (
     <div className="container">
@@ -85,7 +90,7 @@ function App() {
           className="search-input"
         />
         <button type="submit" className="search-btn">
-          Search
+          <i className="fa-solid fa-magnifying-glass"></i>
         </button>
       </form>
       {error && <p className="error">{error}</p>}
