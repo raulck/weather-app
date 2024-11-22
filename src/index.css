@@ -61,7 +61,7 @@ body {
   display: flex;
   &::before {
     content: "";
-    background: url("../public/images/app_bg.jpg") no-repeat center center/cover;
+    background: url("/images/app_bg.jpg") no-repeat center center/cover;
     /* background: url("../public/images/default.jpg") no-repeat center
       center/cover; */
     position: absolute;
@@ -72,13 +72,13 @@ body {
     z-index: -1;
   }
   &.medium::before {
-    background: url("../public/images/medium.jpg") no-repeat center center/cover;
+    background: url("/images/medium.jpg") no-repeat center center/cover;
   }
   &.low::before {
-    background: url("../public/images/low.jpg") no-repeat center center/cover;
+    background: url("/images/low.jpg") no-repeat center center/cover;
   }
   &.high::before {
-    background: url("../public/images/high.jpg") no-repeat center center/cover;
+    background: url("/images/high.jpg") no-repeat center center/cover;
   }
 }
 

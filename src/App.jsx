@@ -67,6 +67,7 @@ function App() {
 
   useEffect(() => {
     fetchWeatherData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMetric]);
 
   const handleSubmit = (event) => {
