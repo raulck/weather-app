@@ -17,6 +17,17 @@ function App() {
 
   const API_KEY = import.meta.env.VITE_API_KEY;
 
+  function setBgImage() {
+    const tempCondition = weatherData?.main?.temp;
+    if (!tempCondition) return "default";
+
+    const [low, medium] = isMetric ? [10, 25] : [50, 77];
+
+    if (tempCondition > low && tempCondition < medium) return "medium";
+    if (tempCondition >= medium) return "high";
+    return "low";
+  }
+
   const fetchWeatherData = async () => {
     if (city) {
       try {
@@ -52,6 +63,8 @@ function App() {
     }
   };
 
+  console.log("wd", weatherData);
+
   useEffect(() => {
     fetchWeatherData();
   }, [isMetric]);
@@ -70,20 +83,22 @@ function App() {
   }
 
   return (
-    <div className="container">
-      <ThemeToggle />
-      <Form
-        city={city}
-        setCity={setCity}
-        error={error}
-        handleSubmit={handleSubmit}
-      />
-      <WeatherDay
-        weatherData={weatherData}
-        isMetric={isMetric}
-        handleTempUnitChange={handleTempUnitChange}
-      />
-      <Forecast forecast={forecast} isMetric={isMetric} />
+    <div className={`bg_image ${setBgImage()}`}>
+      <div className="container">
+        <ThemeToggle />
+        <Form
+          city={city}
+          setCity={setCity}
+          error={error}
+          handleSubmit={handleSubmit}
+        />
+        <WeatherDay
+          weatherData={weatherData}
+          isMetric={isMetric}
+          handleTempUnitChange={handleTempUnitChange}
+        />
+        <Forecast forecast={forecast} isMetric={isMetric} />
+      </div>
     </div>
   );
 }
